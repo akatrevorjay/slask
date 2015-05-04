@@ -21,5 +21,7 @@ def on_message(msg, server):
     if not match: return
 
     n = 1 if not match[0][1] else int(match[0][1])
+    if n > 100:
+        return ':fuck_your_shit_im_in_a_bear_suit:'
 
     return emoji(n)
