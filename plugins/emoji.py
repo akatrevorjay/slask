@@ -21,7 +21,8 @@ def on_message(msg, server):
     if not match: return
 
     n = 1 if not match[0][1] else int(match[0][1])
-    if n > 100:
-        return ':fuck_your_shit_im_in_a_bear_suit:'
+    if n > 420:  # yolo swag blazeit
+        bearlain = random.choice(['bear', 'lain'])
+        return ':fuck_your_shit_im_in_a_%s_suit:' % bearlain
 
     return emoji(n)
