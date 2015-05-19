@@ -40,12 +40,14 @@ def init_plugins():
 
 init_plugins()
 
-def run_hook(hook, data, server):
+def run_hook(hook_to_run, data, server):
     responses = []
-    for hook in hooks.get(hook, []):
-        h = hook(data, server)
-        if h: responses.append(h)
-
+    for hook in hooks.get(hook_to_run, []):
+        try:
+            h = hook(data, server)
+            if h: responses.append(h)
+        except Exception as e:
+            print "Exception running hook %s[%s]: %s" % (hook_to_run, hook, e)
     return responses
 
 @app.route("/", methods=['POST'])
