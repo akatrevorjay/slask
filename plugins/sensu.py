@@ -50,8 +50,12 @@ def createPayload(name, reason):
     }
 
 def on_message(msg, server):
-    test = msg.get('test', '')
+    text = msg.get('text', '')
     match = re.findall(r'!stash( .*)+', text)
     if not match: return
 
-    return createStash(msg)
+    return createStash(text)
+
+
+def test():
+    on_message(dict(text="!stash sensu0.prod no real reason, just testing"), None)
