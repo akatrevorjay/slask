@@ -1,8 +1,9 @@
 '''!stash [client-name] [reason]'''
-import urllib, urllib2
+import urllib2
 import json
 import os
 import time
+import re
 
 DEFAULT_EXPIRE = int(os.getenv('SENSU_STASH_EXPIRE', 3600*24))    # 24 hr, unit: seconds
 SENSU_API_BASE_URL = os.getenv('SENSU_API_BASE_URL', 'http://sensu.vkportal.com:4567')
@@ -54,4 +55,3 @@ def on_message(msg, server):
     if not match: return
 
     return createStash(msg)
-
