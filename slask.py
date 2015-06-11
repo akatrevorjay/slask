@@ -47,7 +47,9 @@ def run_hook(hook_to_run, data, server):
             h = hook(data, server)
             if h: responses.append(h)
         except Exception as e:
-            print "Exception running hook %s[%s]: %s" % (hook_to_run, hook, e)
+            msg = "Exception running hook %s[%s]: %s" % (hook_to_run, hook, e)
+            print msg
+            responses.append(msg)
     return responses
 
 @app.route("/", methods=['POST'])
